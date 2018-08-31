@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 
 import UserForm from './components/UserForm';
-import { fetchMessagesBefore } from './lib/facebook-fetch.js';
+// import { fetchMessagesBefore } from './lib/facebook-fetch.js';
 
 class App extends Component {
     constructor(props) {
