@@ -5,7 +5,7 @@ export default class LocalStorageInput extends Component {
     constructor(props) {
         super(props);
 
-        this.STORAGE_NAME = `components.${props.name}`;
+        this.STORAGE_NAME = `messenger_scrapper.components.${props.name}`;
 
         this.state = {
             value: this.getLocalStorageValue() || props.initialValue || ''

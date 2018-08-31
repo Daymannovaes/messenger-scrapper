@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 
 import UserForm from './components/UserForm';
+import { fetchMessagesBefore } from './lib/facebook-fetch.js';
 
 class App extends Component {
     constructor(props) {
@@ -17,6 +18,8 @@ class App extends Component {
     handleSubmit = ({ userId, cookies }) => {
         this.setState({ loading: true });
         this.setState({ userId, cookies });
+
+        fetchMessagesBefore({ userId, cookies }).then(messages => this.setState({ messages }));
     }
 
     handleCancel = event => {

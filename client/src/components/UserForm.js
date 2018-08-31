@@ -38,7 +38,7 @@ export default class UserForm extends Component {
                 &nbsp;
                 cookies <LocalStorageInput name="cookies" placeholder="cookies" onChange={this.handleChange} />
 
-                <Button disabled={this.props.loading}>{this.state.loading ? 'Loading...' : 'Submit'}</Button>
+                <Button disabled={this.props.loading}>{this.props.loading ? 'Loading...' : 'Submit'}</Button>
                 <Button disabled={!this.props.loading} onClick={this.handleCancel}>Stop</Button>
             </Form>
         );
