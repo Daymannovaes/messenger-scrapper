@@ -2,16 +2,18 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-import LocalStorageInput from './components/LocalStorageInput';
+import UserForm from './components/UserForm';
 
 class App extends Component {
     constructor(props) {
         super(props);
         this.state = {};
     }
-    handleChange = event => {
-        this.setState({ value: event.target.value });
+
+    handleSubmit = ({ userId }) => {
+        this.setState({ userId });
     }
+
   render() {
     return (
       <div className="App">
@@ -19,9 +21,9 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to my Messenger Scrapper</h1>
         </header>
-        <LocalStorageInput name="localStorageTest" placeholder="this is an input" onChange={this.handleChange} />
+        <UserForm onSubmit={this.handleSubmit} />
 
-        {this.state.value}
+        {this.state.userId}
       </div>
     );
   }
