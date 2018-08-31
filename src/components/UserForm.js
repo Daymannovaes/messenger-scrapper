@@ -25,7 +25,9 @@ export default class UserForm extends Component {
     render() {
         return (
             <Form onSubmit={this.handleSubmit}>
-                <LocalStorageInput name="userId" placeholder="this is an input" onChange={this.handleChange} />
+                userId <LocalStorageInput name="userId" placeholder="userId" onChange={this.handleChange} />
+                &nbsp;
+                cookies <LocalStorageInput name="cookies" placeholder="cookies" onChange={this.handleChange} />
 
                 <Button>Submit</Button>
             </Form>

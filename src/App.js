@@ -10,8 +10,8 @@ class App extends Component {
         this.state = {};
     }
 
-    handleSubmit = ({ userId }) => {
-        this.setState({ userId });
+    handleSubmit = ({ userId, cookies }) => {
+        this.setState({ userId, cookies });
     }
 
   render() {
@@ -24,6 +24,7 @@ class App extends Component {
         <UserForm onSubmit={this.handleSubmit} />
 
         {this.state.userId}
+        {this.state.cookies}
       </div>
     );
   }
