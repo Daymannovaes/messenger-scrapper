@@ -11,7 +11,7 @@ export default class LocalStorageInput extends Component {
             value: this.getLocalStorageValue() || props.initialValue || ''
         };
 
-        this.handleChange({
+        this.props.onChange({
             target: {
                 value: this.state.value,
                 name: props.name

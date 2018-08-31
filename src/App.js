@@ -7,11 +7,20 @@ import UserForm from './components/UserForm';
 class App extends Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            loading: false,
+            userId: '',
+            cookies: ''
+        };
     }
 
     handleSubmit = ({ userId, cookies }) => {
+        this.setState({ loading: true });
         this.setState({ userId, cookies });
+    }
+
+    handleCancel = event => {
+        this.setState({ loading: false });
     }
 
   render() {
@@ -21,7 +30,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to my Messenger Scrapper</h1>
         </header>
-        <UserForm onSubmit={this.handleSubmit} />
+        <UserForm loading={this.state.loading} onCancel={this.handleCancel} onSubmit={this.handleSubmit} />
 
         {this.state.userId}
         {this.state.cookies}
