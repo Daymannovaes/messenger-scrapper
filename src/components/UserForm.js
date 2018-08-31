@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 import LocalStorageInput from './LocalStorageInput';
+import Button from './Button';
+
+const Form = styled.form`
+    margin: 12px;
+`;
 
 export default class UserForm extends Component {
     constructor(props) {
@@ -18,11 +24,11 @@ export default class UserForm extends Component {
     }
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
+            <Form onSubmit={this.handleSubmit}>
                 <LocalStorageInput name="userId" placeholder="this is an input" onChange={this.handleChange} />
 
-                <button>Submit</button>
-            </form>
+                <Button>Submit</Button>
+            </Form>
         );
     }
 }
