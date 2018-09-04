@@ -1,7 +1,7 @@
 'use strict';
 const fetch = require('node-fetch');
 
-module.exports.hello = async (event, context) => {
+module.exports.fetch = async (event, context) => {
     return fetch('https://www.google.com').then(res => res.text()).then(body => {
           return {
             statusCode: 200,

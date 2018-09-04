@@ -1,7 +1,6 @@
 {
   "name": "messenger-scrapper",
   "version": "0.1.0",
-  "private": true,
   "dependencies": {
     "axios": "^0.18.0",
     "react": "^16.4.2",
@@ -10,12 +9,17 @@
     "styled-components": "^3.4.5"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "start": "npm run start:server & npm run start:client",
+    "start:client": "cd _client/ && npm start",
+    "start:server": "cd _server/ && npm start",
+    "build": "npm run build:server & npm run build:client",
+    "build:client": "cd _client/ && npm build",
+    "build:server": "cd _server/ && npm build",
+    "test": "npm run test:server && npm run test:client",
+    "test:client": "cd _client/ && npm test",
+    "test:server": "cd _server/ && npm test"
   },
-  "description": "This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).",
+  "description": "This project is to fetch all messages from any giver user in messenger, using your own cookies",
   "main": "index.js",
   "devDependencies": {},
   "repository": {

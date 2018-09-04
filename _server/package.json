@@ -4,6 +4,7 @@
   "dependencies": {
     "node-fetch": "^2.2.0"
   },
+  "main": "handler.js",
   "scripts": {
     "start": "serverless offline start",
     "build": "serverless deploy",

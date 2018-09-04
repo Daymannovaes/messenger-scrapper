@@ -19,7 +19,7 @@ class App extends Component {
         this.setState({ loading: true });
         this.setState({ userId, cookies });
 
-        fetchMessagesBefore({ userId, cookies }).then(messages => this.setState({ messages }));
+        // fetchMessagesBefore({ userId, cookies }).then(messages => this.setState({ messages }));
     }
 
     handleCancel = event => {
