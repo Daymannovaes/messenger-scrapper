@@ -1,18 +1,21 @@
-'use strict';
 const fetch = require('node-fetch');
+const { fetchMessagesBefore } = require('./facebook-fetch');
 
 module.exports.fetch = async (event, context) => {
-    return fetch('https://www.google.com').then(res => res.text()).then(body => {
-          return {
-            statusCode: 200,
-            body: JSON.stringify({
-              message: 'Go Serverless v1.0! Your function executed successfully!',
-              input: event,
-              body: body,
-            }),
-          };
-    });
+    const queryStringParameters = event.queryStringParameters || {};
+    const { before, cookies, userId } = queryStringParameters;
 
-  // Use this code if you don't use the http event with the LAMBDA-PROXY integration
-  // return { message: 'Go Serverless v1.0! Your function executed successfully!', event };
+    if(!cookies || !userId) return {
+        statusCode: 400,
+        body: JSON.stringify({
+            message: "missing cookies or userId as parameter in query string"
+        })
+    };
+
+    return fetchMessagesBefore({ before, cookies, userId }).catch(error => ({
+        statusCode: 400,
+        body: JSON.stringify({
+            message: error.toString(),
+        })
+    }));
 };
