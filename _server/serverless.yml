@@ -1,0 +1,21 @@
+service: messenger-scrapper
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+
+functions:
+  fetch:
+    handler: handler.fetch
+
+    events:
+      - http:
+          path: fetch
+          method: get
+
+plugins:
+    - serverless-offline
+
+custom:
+  serverless-offline:
+    port: 4000

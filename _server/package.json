@@ -1,0 +1,16 @@
+{
+  "name": "messenger-scrapper",
+  "version": "0.1.0",
+  "dependencies": {
+    "node-fetch": "^2.2.0"
+  },
+  "scripts": {
+    "start": "serverless offline start",
+    "build": "serverless deploy",
+    "test": ""
+  },
+  "devDependencies": {
+    "serverless": "^1.30.3",
+    "serverless-offline": "^3.25.10"
+  }
+}
