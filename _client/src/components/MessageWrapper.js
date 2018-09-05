@@ -1,16 +1,11 @@
 import { get, uniqBy } from 'lodash';
 import React, { Component } from 'react';
-import styled from 'styled-components';
 
 import Button from './Button';
 import Message from './Message';
 
 import { fetchMessagesBefore } from '../lib/facebook-fetch.js';
 import { getBeforeTimestamp, isTextMessage, hasPreviousPage } from '../lib/facebook-message';
-
-const MessagesDiv = styled.div`
-    display: ${props => props.show ? 'block' : 'none'}
-`;
 
 export default class MessageWrapper extends Component {
     constructor(props) {
@@ -71,9 +66,9 @@ export default class MessageWrapper extends Component {
             <div>
                 <Button onClick={this.toggleShowMessages}>{this.state.showMessages ? 'hide' : 'show'} {this.state.messages.length} messages</Button>
 
-                <MessagesDiv show={this.state.showMessages}>
-                    {this.state.messages.map(message => <Message key={message.message_id} message={message} />)}
-                </MessagesDiv>
+                <div>
+                    {this.state.showMessages && this.state.messages.map(message => <Message key={message.message_id} message={message} />)}
+                </div>
             </div>
         );
     }

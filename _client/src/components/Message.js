@@ -10,6 +10,7 @@ const Message = styled.div`
     width: fit-content;
     text-align: left;
     padding: 12px;
+    word-wrap: break-word;
 `;
 
 const Time = styled.span`
