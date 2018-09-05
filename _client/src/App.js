@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 
 import UserForm from './components/UserForm';
-// import { fetchMessagesBefore } from './lib/facebook-fetch.js';
+import MessageWrapper from './components/MessageWrapper';
 
 class App extends Component {
     constructor(props) {
@@ -18,13 +18,13 @@ class App extends Component {
     handleSubmit = ({ userId, cookies }) => {
         this.setState({ loading: true });
         this.setState({ userId, cookies });
-
-        // fetchMessagesBefore({ userId, cookies }).then(messages => this.setState({ messages }));
     }
 
     handleCancel = event => {
         this.setState({ loading: false });
     }
+
+    handleComplete = () => this.handleCancel()
 
   render() {
     return (
@@ -35,8 +35,7 @@ class App extends Component {
         </header>
         <UserForm loading={this.state.loading} onCancel={this.handleCancel} onSubmit={this.handleSubmit} />
 
-        {this.state.userId}
-        {this.state.cookies}
+        <MessageWrapper onFetchComplete={this.handleComplete} userId={this.state.userId} cookies={this.state.cookies} loading={this.state.loading} />
       </div>
     );
   }
