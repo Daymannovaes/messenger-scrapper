@@ -1,5 +1,9 @@
-const _ = require('lodash');
+const { get } = require('lodash');
 
-export const getMessagesFromPayload = (payload) => _.get(payload, 'o0.data.message_thread.messages.nodes');
-export const hasPreviousPage = payload => _.get(payload, 'o0.data.message_thread.messages.page_info.has_previous_page');
-export const getBeforeFromPayload = payload => _.get(payload, 'o0.data.message_thread.messages.nodes[0].timestamp_precise');
+export const hasPreviousPage = response => get(response, 'page_info.has_previous_page', false);
+
+export const getBeforeTimestamp = messages => parseInt(
+    get(messages, '[0].timestamp_precise', new Date().getTime())
+)
+
+export const isTextMessage = message => !!get(message, 'message.text');
