@@ -23,19 +23,22 @@ export default class MessageWrapper extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        if(!this.props.loading && nextProps.loading) return this.startPooling(nextProps);
+        if(!this.props.loading && nextProps.loading) return this.pool(nextProps);
     }
 
-    startPooling = (props) => {
+    pool = (props) => {
         const before = getBeforeTimestamp(this.state.messages) + 1;
         const { userId, cookies } = props;
 
+        console.log(`pooling before ${before} from ${userId}`);
+
         fetchMessagesBefore({ userId, cookies, before })
-            .then(this.checkForPoolAgain)
-            .then(this.addMessages);
+            .then(this.setKeepPooling)
+            .then(this.addMessages)
+            .then(this.tryPoolAgain);
     }
 
-    checkForPoolAgain = response => {
+    setKeepPooling = response => {
         this.keepPooling = this.props.loading && hasPreviousPage(response);
 
         return response;
@@ -55,13 +58,18 @@ export default class MessageWrapper extends Component {
         this.setState({ messages })
     }
 
+    tryPoolAgain = () => {
+        if(!this.keepPooling) return this.props.onFetchComplete();
+
+        setTimeout(this.pool.bind(this, this.props), 0);
+    }
+
     toggleShowMessages = () => this.setState({ showMessages: !this.state.showMessages })
 
     render() {
         return (
             <div>
-                <div>messages fetched: {this.state.messages.length}</div>
-                <Button onClick={this.toggleShowMessages}>{this.state.showMessages ? 'hide' : 'show'} messages</Button>
+                <Button onClick={this.toggleShowMessages}>{this.state.showMessages ? 'hide' : 'show'} {this.state.messages.length} messages</Button>
 
                 <MessagesDiv show={this.state.showMessages}>
                     {this.state.messages.map(message => <Message key={message.message_id} message={message} />)}
