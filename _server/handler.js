@@ -15,7 +15,7 @@ module.exports.fetch = async (event, context) => {
     return fetchMessagesBefore({ before, cookies, userId })
     .then(res => ({
         statusCode: 200,
-        body: res
+        body: JSON.stringify(res)
     }))
     .catch(error => ({
         statusCode: 400,
