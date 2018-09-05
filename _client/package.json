@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
+    "gh-pages": "^1.2.0",
     "querystring": "^0.2.0",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
@@ -11,6 +12,8 @@
     "styled-components": "^3.4.5"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
@@ -26,8 +29,8 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "homepage": "https://daymannovaes.github.io/messenger-scrapper",
   "bugs": {
     "url": "https://github.com/Daymannovaes/messenger-scrapper/issues"
-  },
-  "homepage": "https://github.com/Daymannovaes/messenger-scrapper#readme"
+  }
 }

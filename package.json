@@ -17,7 +17,10 @@
     "build:server": "cd _server/ && npm build",
     "test": "npm run test:server && npm run test:client",
     "test:client": "cd _client/ && npm test",
-    "test:server": "cd _server/ && npm test"
+    "test:server": "cd _server/ && npm test",
+    "deploy": "npm run deploy:server && npm run deploy:client",
+    "deploy:server": "cd _server/ && npm run build:prod",
+    "deploy:client": "cd _client/ && npm run deploy" 
   },
   "description": "This project is to fetch all messages from any giver user in messenger, using your own cookies",
   "main": "index.js",
