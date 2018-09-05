@@ -4,6 +4,12 @@ provider:
   name: aws
   runtime: nodejs8.10
 
+package:
+  exclude:
+    - README.md
+    - package-lock.json
+    - package.json
+
 functions:
   fetch:
     handler: handler.fetch

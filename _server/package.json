@@ -8,7 +8,9 @@
   "main": "handler.js",
   "scripts": {
     "start": "serverless offline start",
-    "build": "serverless deploy",
+    "build": "npm run build:dev",
+    "build:prod": "serverless deploy --stage production",
+    "build:dev": "serverless deploy",
     "test": ""
   },
   "devDependencies": {
