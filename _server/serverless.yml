@@ -18,6 +18,7 @@ functions:
       - http:
           path: fetch
           method: get
+          cors: true
 
 plugins:
     - serverless-offline
