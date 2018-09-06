@@ -23,7 +23,7 @@ This scrapper fetches everything at once, and then display at your screen
 
 ![Tutorial 1](https://i.imgur.com/RxPbrAZ.png)
 
-_If you don't trust me to give me your cookies, you can run it locally. But I assure that I don't store, I only forward to the facebook API _
+_If you don't trust me to give me your cookies, you can run it locally. But I assure that I don't store, I only forward to the facebook API_
 
 ## Running Locally
 
