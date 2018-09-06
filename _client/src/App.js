@@ -11,20 +11,29 @@ class App extends Component {
         this.state = {
             loading: false,
             userId: '',
-            cookies: ''
+            cookies: '',
+            error: ''
         };
     }
 
     handleSubmit = ({ userId, cookies }) => {
-        this.setState({ loading: true });
-        this.setState({ userId, cookies });
+        this.setState({
+            userId,
+            cookies,
+            error: '',
+            loading: true
+        });
     }
 
     handleCancel = event => {
         this.setState({ loading: false });
     }
 
-    handleComplete = () => this.handleCancel()
+    handleComplete = (error) => {
+        this.handleCancel();
+
+        if(error) this.setState({ error });
+    }
 
   render() {
     return (
@@ -36,6 +45,8 @@ class App extends Component {
         <UserForm loading={this.state.loading} onCancel={this.handleCancel} onSubmit={this.handleSubmit} />
 
         <MessageWrapper onFetchComplete={this.handleComplete} userId={this.state.userId} cookies={this.state.cookies} loading={this.state.loading} />
+
+        {this.state.error.toString()}
       </div>
     );
   }

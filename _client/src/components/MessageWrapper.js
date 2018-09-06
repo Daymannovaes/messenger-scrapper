@@ -18,6 +18,7 @@ export default class MessageWrapper extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
+        if(this.props.userId !== nextProps.userId) this.setState({ messages: [] });
         if(!this.props.loading && nextProps.loading) return this.pool(nextProps);
     }
 
@@ -30,7 +31,8 @@ export default class MessageWrapper extends Component {
         fetchMessagesBefore({ userId, cookies, before })
             .then(this.setKeepPooling)
             .then(this.addMessages)
-            .then(this.tryPoolAgain);
+            .then(this.tryPoolAgain)
+            .catch(this.props.onFetchComplete);
     }
 
     setKeepPooling = response => {
