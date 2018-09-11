@@ -18,10 +18,11 @@ This scrapper fetches everything at once, and then display at your screen
 4. scroll the chat up to fetch new messages
 5. search for a request call to https://www.messenger.com/api/graphqlbatch/
 6. copy the `cookie` information and paste into the field `cookies`
-7. search for the `queries` parameter in Form Data and then find the `id` property, this is the `userId`
-8. Click in `Submit` and then in `show messages`
+7. copy the `fb_dtsg` paramenter and paste into the field `fb_dtsg`
+8. search for the `queries` parameter in Form Data and then find the `id` property, this is the `userId`
+9. Click in `Submit` and then in `show messages`
 
-![Tutorial 1](https://i.imgur.com/RxPbrAZ.png)
+![Tutorial 1](https://i.imgur.com/RxPbrAZ.png?1)
 
 _If you don't trust me to give me your cookies, you can run it locally. But I assure that I don't store, I only forward to the facebook API_
 
