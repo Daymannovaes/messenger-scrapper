@@ -15,7 +15,9 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "npm run build:react && npm run build:cname",
+    "build:react": "react-scripts build",
+    "build:cname": "cp CNAME build/CNAME",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
