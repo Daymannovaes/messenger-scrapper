@@ -12,14 +12,16 @@ class App extends Component {
             loading: false,
             userId: '',
             cookies: '',
+            fb_dtsg: '',
             error: ''
         };
     }
 
-    handleSubmit = ({ userId, cookies }) => {
+    handleSubmit = ({ userId, cookies, fb_dtsg }) => {
         this.setState({
             userId,
             cookies,
+            fb_dtsg,
             error: '',
             loading: true
         });
@@ -44,7 +46,7 @@ class App extends Component {
         </header>
         <UserForm loading={this.state.loading} onCancel={this.handleCancel} onSubmit={this.handleSubmit} />
 
-        <MessageWrapper onFetchComplete={this.handleComplete} userId={this.state.userId} cookies={this.state.cookies} loading={this.state.loading} />
+        <MessageWrapper onFetchComplete={this.handleComplete} userId={this.state.userId} cookies={this.state.cookies} loading={this.state.loading} fb_dtsg={this.state.fb_dtsg} />
 
         {this.state.error.toString()}
       </div>

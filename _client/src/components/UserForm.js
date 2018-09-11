@@ -12,7 +12,8 @@ export default class UserForm extends Component {
         super(props);
         this.state = {
             userId: '',
-            cookies: ''
+            cookies: '',
+            fb_dtsg: ''
         };
     }
 
@@ -37,6 +38,8 @@ export default class UserForm extends Component {
                 userId <LocalStorageInput name="userId" placeholder="userId" onChange={this.handleChange} />
                 &nbsp;
                 cookies <LocalStorageInput name="cookies" placeholder="cookies" onChange={this.handleChange} />
+                &nbsp;
+                fb_dtsg <LocalStorageInput name="fb_dtsg" placeholder="fb_dtsg" onChange={this.handleChange} />
 
                 <Button disabled={this.props.loading}>{this.props.loading ? 'Loading...' : 'Submit'}</Button>
                 <Button disabled={!this.props.loading} onClick={this.handleCancel}>Stop</Button>

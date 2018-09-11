@@ -24,11 +24,11 @@ export default class MessageWrapper extends Component {
 
     pool = (props) => {
         const before = getBeforeTimestamp(this.state.messages) + 1;
-        const { userId, cookies } = props;
+        const { userId, cookies, fb_dtsg } = props;
 
         console.log(`pooling before ${before} from ${userId}`);
 
-        fetchMessagesBefore({ userId, cookies, before })
+        fetchMessagesBefore({ userId, cookies, before, fb_dtsg })
             .then(this.setKeepPooling)
             .then(this.addMessages)
             .then(this.tryPoolAgain)

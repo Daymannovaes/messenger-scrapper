@@ -8,8 +8,8 @@ const REMOTE_URL = "https://7mel1t1px5.execute-api.us-east-1.amazonaws.com/produ
 const BASE_URL = isProduction ? REMOTE_URL : LOCAL_URL;
 const URL = `${BASE_URL}/fetch`
 
-export function fetchMessagesBefore({ userId, cookies, before }) {
-    const qs = querystring.stringify({ userId, cookies, before });
+export function fetchMessagesBefore({ userId, cookies, before, fb_dtsg }) {
+    const qs = querystring.stringify({ userId, cookies, before, fb_dtsg });
 
     return axios.get(`${URL}?${qs}`).then(response => response.data);
 }
